@@ -1,0 +1,13 @@
+﻿<div class="core-alert-container roboto-font" #container>
+    <div class="wrapper w-100">
+        @for (alert of alerts; track $index) {
+            <div class="{{cssClass(alert)}}">
+                <div [ngStyle]="{
+                    paddingRight: '1rem',
+                    textWrap:'nowrap'
+                }" [innerHTML]="alert.message"></div>
+                <button type="button" class="btn-close" (click)="removeAlert(alert)"></button>
+            </div>
+        }
+    </div>
+</div>

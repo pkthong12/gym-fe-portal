@@ -1,0 +1,26 @@
+<div class="select-box form-control" [class.pe-none]="disableSelect">
+  <div class="select-box__current" tabindex="1">
+    <div class="select-box__value">
+      <input class="select-box__input" type="radio" id="null" value="null" name="null"/>
+      <p class="select-box__input-text"></p>
+    </div>
+    @for (item of dataShow; track $index) {
+      <div class="select-box__value">
+        <input class="select-box__input" [checked]="selectedId == item.id" type="radio" [id]="item.id" [value]="item.id" [name]="item.name"/>
+        <p class="select-box__input-text">{{item.name}}</p>
+      </div>
+    }
+    @if (!!selectedId) {
+      <button (click)="onUnselectedIds()" type="button" class="close" data-dismiss="modal"><span>&times;</span>
+      </button>
+    }
+    <img class="select-box__icon" src="../../../assets/images/up-chervon.svg" alt="Arrow Icon" aria-hidden="true"/>
+  </div>
+  <ul class="select-box__list">
+    @for (item of dataShow; track $index) {
+      <li (click)="onSelectedIds(item)">
+        <label class="select-box__option" [htmlFor]="item.id" aria-hidden="aria-hidden">{{item.name}}</label>
+      </li>
+    }
+  </ul>
+</div>

@@ -1,0 +1,182 @@
+<div class="card">
+    @if(!hideHeader){
+        <div class="card-header">
+            <h4 class="card-title">{{!!!language ? title[0]:title[1]}}</h4>
+            <div>
+                <!-- <div [ngStyle]="{
+                    marginRight: 5+'px',
+                }" class="input-group search-area right d-lg-inline-flex d-none">
+                    <input type="search" class="form-control" placeholder="Find something here...">
+                    <div class="input-group-append">
+                        <span [appTooltip]="'Search'" class="input-group-text">
+                            <a href="javascript:void(0)">
+                                <i class="flaticon-381-search-2"></i>
+                            </a>
+                        </span>
+                    </div>
+                </div> -->
+                @for (button of showButtons; track $index) {
+                <div (click)="onHeaderButtonClick(button.code)" [appTooltip]='button.caption' class="btn btn-sm"><i
+                        [class]="button.iconClass"></i></div>
+                }
+            </div>
+        </div>
+    }
+    <div class="row d-flex flex-nowrap">
+        @if(!!left){
+        <div class="col-xl-3">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div [ngStyle]="{
+                        minHeight: (tableHeight -46) + 'px',
+                    }" class="card">
+                        <ng-container [ngTemplateOutlet]="left"></ng-container>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        }
+
+        <div [class]="!!left? 'col-xl-9':'col-xl-12'">
+            <div class="card">
+                <div class="card-body">
+                    <div>
+                        <table [ngStyle]="{
+                             minHeight: (tableHeight -46) + 'px',
+                             maxHeight: (tableHeight -46) + 'px'
+                        }" id="base-table" class="table table-responsive"><!-- table-responsive-md -->
+                            <colgroup>
+                                <col>
+                                @for (col of visibleColumns; track col.field) {
+                                @if (!!!col.hidden) {
+                                <col>
+                                }
+                                }
+                                <col>
+                            </colgroup>
+                            <thead style="background-color: currentColor;">
+                                <tr style="color: #fff;">
+                                    <th style="width:50px;">
+                                        <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                            <input (ngModelChange)="toggleCheckAll($event)"
+                                                [(ngModel)]="headerCheckboxState" type="checkbox"
+                                                class="custom-control-input" id="checkAll" required="">
+                                            <label class="custom-control-label" for="checkAll"></label>
+                                        </div>
+                                    </th>
+                                    @for (col of columns; track col.field) {
+                                    @if (!!!col.hidden) {
+                                    <th class="table-title-name">
+                                        <div [ngStyle]="{
+                                            width: !!col.width?col.width+'px' :'80px',
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis'
+                                        }" [appTooltip]="!!!language ? col.caption[0] : col.caption[1]">
+                                            {{!!!language ? col.caption[0] : col.caption[1]}}
+                                        </div>
+                                    </th>
+                                    }
+                                    }
+                                    <!-- <th>&#160;</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (loading) {
+                                <app-pre-loader></app-pre-loader>
+                                }
+                                <tr *ngFor="let row of data; let row_index=index" (click)="onClickLocal(row, $event)">
+                                    <td>
+                                        <div class="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                            <input [(ngModel)]="checkingModel[row_index]"
+                                                (ngModelChange)="onCheckingNgModelChange()" type="checkbox"
+                                                class="custom-control-input" [id]="'customCheckBox'+ row_index"
+                                                required="">
+                                            <label class="custom-control-label"
+                                                [htmlFor]="'customCheckBox'+ row_index"></label>
+                                        </div>
+                                    </td>
+                                    
+                                    <td *ngFor="let col of visibleColumns; let col_index = index">
+                                        <div [appTooltip]="row[col.field]" [ngStyle]="{
+                                            width: !!col.width?col.width+'px' :'80px',
+                                            whiteSpace: 'nowrap',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis'
+                                        }">
+                                        <!-- <div class="d-flex align-items-center"><img src="https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg" class="rounded-lg mr-2" width="24" alt=""></div> -->
+                                            @if (col.type == 'bool') {
+                                                <div [ngStyle]="{
+                                                    minHeight: '1.8rem',
+                                                }" class="custom-control custom-checkbox checkbox-success check-lg mr-3 d-flex">
+                                                    <input [checked]="row[col.field]" type="checkbox"  class="custom-control-input form-control" >
+                                                    <label class="custom-control-label" for="isGuestPass"></label>
+                                                </div>
+                                            }
+                                            @else if (col.type == 'date') {
+                                                {{row[col.field] |date:'dd/MM/yyyy'}}
+                                            }
+                                            @else if (col.type == 'currency') {
+                                                {{row[col.field] |currency:'VND'}}
+                                            }
+                                            @else {
+                                                {{row[col.field]}} 
+                                            } 
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        @if (!loading) {
+                        <div>
+                            <nav class="row">
+                                <div class="dataTables_info col-6" id="example2_info" role="status" aria-live="polite">
+                                    Hiển thị từ
+                                    <select class="custom-select-pagination" [(ngModel)]="selectedSize"
+                                        (ngModelChange)="onSizeChange($event)">
+                                        <option *ngFor="let size of SizeChanger">{{size}}</option>
+                                    </select> /<span id="totalProduct">{{innerBodyCount$.value}}</span> kết quả
+                                </div>
+                                <div class="col-6">
+                                    <ul id="pagination" class="pagination pagination-circle"
+                                        style="justify-content: end;">
+                                        <li id="previous" class="page-item page-indicator" style="cursor: not-allowed;">
+                                            <a class="page-link">
+                                                <i class="la la-angle-double-left"></i>
+                                            </a>
+                                        </li>
+                                        <li id="previous" class="page-item page-indicator" style="cursor: not-allowed;">
+                                            <a class="page-link">
+                                                <i class="la la-angle-left"></i>
+                                            </a>
+                                        </li>
+                                        @for (item of displayPageCount; track $index) {
+                                        <li [class.active]="item == currentPage$.value"
+                                            [class.not-current]="item !== currentPage$.value" class="page-item"
+                                            style="cursor:pointer" (click)="clickPageNumber(item)">
+                                            <a class="page-link">{{item}}</a>
+                                        </li>
+                                        }
+                                        <li id="next" class="page-item page-indicator" style="cursor: not-allowed;">
+                                            <a class="page-link"><i class="la la-angle-right"></i></a>
+                                        </li>
+                                        <li id="next" class="page-item page-indicator" style="cursor: not-allowed;">
+                                            <a class="page-link"><i class="la la-angle-double-right"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+
+                        </div>
+                    }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if(!!loadingDelete) {
+    <pre-loader-full-screen ></pre-loader-full-screen>
+}

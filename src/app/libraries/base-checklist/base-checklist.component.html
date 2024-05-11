@@ -1,0 +1,35 @@
+<div class="select-box form-control" >
+  <div class="select-box__current h-100" tabindex="1" (click)="onShowOptions()">
+    <div class="select-box__value">
+      <input class="select-box__input" type="radio" id="null" value="null" name="null" />
+      <p class="select-box__input-text">{{holderText}}</p>
+    </div>
+    <p class="holderText">{{holderText}}</p>
+    @if (selectedIds !=null && selectedIds.length > 0) {
+    <button (click)="onUnselectedIds()" type="button" class="close" data-dismiss="modal"><span>&times;</span>
+    </button>
+    }
+    <img class="select-box__icon" src="../../../assets/images/up-chervon.svg" alt="Arrow Icon" aria-hidden="true" />
+  </div>
+  <ul class="select-box__list" [class.opacityList]="showOptions">
+    <div class="select-box-area_options">
+      @for (item of dataShow; track $index) {
+      <li (click)="onSelectedIds($index)">
+        <div class="select-box__option" aria-hidden="aria-hidden">
+          <input type="checkbox" (ngModelChange)="onCheckingNgModelChange()" [(ngModel)]="checkingModel[$index]"
+            [id]="'customCheckBox'+ $index" class="custom-control-input" required="">
+          <label class="label-for-checkbox" [htmlFor]="'customCheckBox'+ $index">{{item.name}}</label>
+        </div>
+      </li>
+      }
+    </div>
+    <div class="d-flex justify-content-center">
+      <button [ngStyle]="{
+        padding:'7px 20px'
+      }" class=" btn btn-primary btn-sm" (click)="onBlur()">
+        <i class="flaticon-381-save"></i>
+        {{!!language? 'Close':'Đóng'}}
+      </button>
+    </div>
+  </ul>
+</div>

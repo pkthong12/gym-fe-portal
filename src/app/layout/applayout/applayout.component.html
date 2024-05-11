@@ -1,0 +1,104 @@
+<!--*******************
+    Preloader start
+********************-->
+<!--*******************
+    Preloader end
+********************-->
+
+<!--**********************************
+    Main wrapper start
+  ***********************************-->
+  <div id="main-wrapper">
+
+    <!--**********************************
+        Nav header start
+    ***********************************-->
+    <div class="nav-header">
+        <a [routerLink]="['/home']" class="brand-logo">
+            <img src="../../../assets/icon/default-logo.svg" alt="lg">
+            <div class="brand-title">
+                <h3 style="margin: 0px; color: #eb8153;" class="svg-logo-path">Quản trị</h3>
+            </div>
+        </a>
+
+        <div class="nav-control">
+            <div class="hamburger">
+                <span class="line"></span><span class="line"></span><span class="line"></span>
+            </div>
+        </div>
+    </div>
+    <!--**********************************
+        Nav header end
+    ***********************************-->
+
+    <!--**********************************
+        Header start
+    ***********************************-->
+    
+    <app-header></app-header>
+
+    <!--**********************************
+        Header end ti-comment-alt
+    ***********************************-->
+    <!--**********************************
+        Sidebar start
+    ***********************************-->
+    <div class="deznav">
+        <div class="deznav-scroll">
+            <div class="main-profile">
+                <div class="image-bx">
+                    <img [src]="avatarUrl||'../../../assets/images/blank-profile-picture-973460_1280.webp'">
+                </div>
+                <h5 class="name"><span class="font-w400">Xin chào</span> </h5>
+            </div>
+            <app-navigator></app-navigator>
+
+        </div>
+    </div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+    <!--**********************************
+        Content body start
+    ***********************************-->
+    <div class="content-body">
+        <div class="container-fluid" style="padding-top: 0px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- <app-demo-table></app-demo-table> -->
+                    <router-outlet></router-outlet>
+                </div>
+                <!-- <div class="col-lg-12">
+                    <app-demo-form></app-demo-form>
+                </div> -->
+            </div>
+        </div>
+        <app-confirm-dialog></app-confirm-dialog>
+    </div>
+
+    <!--**********************************
+        Content body end
+    ***********************************-->
+    <!--**********************************
+        Footer start
+    ***********************************-->
+
+    <!-- <app-footer></app-footer> -->
+
+
+    <!--**********************************
+        Footer end
+    ***********************************-->
+    <!--**********************************
+      Support ticket button start
+    ***********************************-->
+    <!--**********************************
+      Support ticket button end
+    ***********************************-->
+
+
+  </div>
+  <!--**********************************
+    Main wrapper end
+  ***********************************-->
+  <core-alert></core-alert>

@@ -1,0 +1,30 @@
+.core-confirm-dialog-container {
+    
+    --z-index: 9999999999;
+
+    position: absolute;
+    z-index: var(--z-index);
+    font-size: 13px;
+}
+
+
+.core-confirm-dialog-container .hidden-input{
+    display: none;
+}
+
+.core-confirm-dialog-container .shown{
+    display: block;
+}
+
+.core-confirm-dialog-container .modal-header {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.captionText{
+    color: #000;
+    font-weight: 400;
+    font-size: 20px;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

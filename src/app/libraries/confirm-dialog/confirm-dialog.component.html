@@ -1,0 +1,50 @@
+<div #container class="core-confirm-dialog-container roboto-font">
+    @if(show == true){
+        <div class="modal-container">
+            <div class="modal-content">
+                <div class="modal fade show" style="display: block;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header" [ngStyle]="{
+                                margin: '1rem 0'
+                            }">
+    
+                                <div style="max-width: unset !important;padding: 0;">
+                                    <div class="title"><span class="captionText">{{ title | uppercase }}</span></div>
+                                </div>
+                                <button type="button" class="close">
+                                    <span (click)="close()">×</span>
+                                </button>
+                            </div>
+                            <div [ngStyle]="{
+                                fontSize: '0.9rem',
+                                padding: '1.875rem',
+                                paddingTop: '1rem'
+                            }">{{ body }}</div>
+                            @if(!!informationLines.length){
+                                <ul>
+                                    @for(line of informationLines; track line){
+                                        <li>
+                                            {{ line }}
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            <div class="modal-footer">
+                                @if (!!!showCancelOnly) {
+                                    <button (click)="onConfirm()" type="button" class="btn btn-secondary" >{{ okButtonText }}</button>
+                                }
+                                <button (click)="close()" type="button" class="btn btn-primary">{{ cancelButtonText }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    
+</div>
+
+@if(show === true){
+    <!-- <div>1231233</div> -->
+}

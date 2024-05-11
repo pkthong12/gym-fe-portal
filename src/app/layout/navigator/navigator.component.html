@@ -1,0 +1,138 @@
+<ul class="metismenu" id="menu">
+    <li class="nav-label first">Menu chính</li>
+    <li *ngIf="data.includes('1')">
+        <a class="ai-icon" href="sdfsdf" aria-expanded="false">
+            <i class="flaticon-144-layout"></i>
+            <span class="nav-text">Dashboard</span>
+        </a>
+    </li>
+    <li class="nav-label">Thành phần</li>
+    <li *ngIf="data.includes('2')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-165-menu"></i>
+            <span class="nav-text">Quản lý khách hàng</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('3')"><a [routerLink]="['/cms/profile/per-customer']">Thông tin khách hàng</a></li>
+            <li *ngIf="data.includes('4')"><a [routerLink]="['/cms/profile/per-customer-transaction']">Giao dịch với
+                    khách hàng</a></li>
+            <li *ngIf="data.includes('5')"><a [routerLink]="['/cms/profile/per-customer-list-card']">Danh sách các thẻ
+                    được cấp</a></li>
+        </ul>
+    </li>
+    <li *ngIf="data.includes('6')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-381-user-3"></i>
+            <span class="nav-text">Quản lý nhân viên</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('7')"><a [routerLink]="['/cms/profile/employees']">Danh sách nhân viên</a></li>
+            <!-- <li *ngIf="data.includes('6')"><a href="">Thông tin giao dịch</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Lịch sử hội viên</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Ngày sinh nhật khách</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Customer Not Goto Gym</a></li> -->
+        </ul>
+    </li>
+    <li *ngIf="data.includes('8')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-381-id-card"></i>
+            <span class="nav-text">Quản lý vật chất</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('9')"><a [routerLink]="['/cms/list/goods-equipment']">Danh sách thiết bị</a></li>
+            <li *ngIf="data.includes('10')"><a [routerLink]="['/cms/list/goods-equipment-fix']">Danh sách bảo trì/sửa
+                    chữa thiết bị</a></li>
+            <li *ngIf="data.includes('11')"><a [routerLink]="['/cms/list/goods-list']">Danh sách hàng hóa</a></li>
+            <!-- <li *ngIf="data.includes('6')"><a href="">Danh sách sản phẩm, NVL</a></li> -->
+            <li *ngIf="data.includes('12')"><a [routerLink]="['/cms/list/gym-shift']">Danh sách Ca tập</a></li>
+            <!-- <li *ngIf="data.includes('13')"><a [routerLink]="['/cms/list/gym-package']">Danh sách Gói tập</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Danh sách Locker</a></li> -->
+            <li *ngIf="data.includes('6')"><a [routerLink]="['/cms/list/locker']">Danh sách tủ</a></li>
+        </ul>
+    </li>
+    <li *ngIf="data.includes('18')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-381-id-card"></i>
+            <span class="nav-text">Quản lý thẻ</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('18')"><a [routerLink]="['/cms/card/card-check-in']">Check In bằng thẻ</a></li>
+            <!-- <li *ngIf="data.includes('19')"><a [routerLink]="['/cms/list/card-check-in']">Danh sách thẻ Check in</a> -->
+            <!-- </li> -->
+            <li *ngIf="data.includes('6')"><a [routerLink]="['/cms/card/card-issuance']">Cấp thẻ</a></li>
+            <!-- <li *ngIf="data.includes('6')"><a href="">Tình trạng Locker</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Thuê tủ</a></li> -->
+            <li *ngIf="data.includes('20')"><a [routerLink]="['/cms/card/card-info']">Danh sách thẻ</a></li>
+            <li *ngIf="data.includes('20')"><a [routerLink]="['/cms/card/card-history']">Lịch sử chỉnh sửa thẻ</a></li>
+            <!-- <li *ngIf="data.includes('6')"><a [routerLink]="['/cms/card/card-issuance']">Chuyển nhượng thẻ</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">New Card</a></li>
+                <li *ngIf="data.includes('6')"><a href="">Renew Card</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Nâng cấp thẻ</a></li>
+            <li *ngIf="data.includes('6')"><a href="">Đóng băng thẻ</a></li>
+            <li *ngIf="data.includes('6')"><a href="">Báo cáo thẻ hết hạn</a></li> -->
+        </ul>
+    </li>
+
+    <!-- <li *ngIf="data.includes('21')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-092-money"></i>
+            <span class="nav-text">Thu ngân</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('6')"><a href="">Hóa đơn bán lẻ</a></li>
+            <li *ngIf="data.includes('6')"><a href="">Danh sách hóa đơn bán lẻ</a></li>
+            <li *ngIf="data.includes('6')"><a href="">Phiếu giảm giá</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Danh sách phiếu giảm giá</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Thông tin giờ tập</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Cập nhật tỷ giá ngoại tệ</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Cập nhật giá bán</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Danh sách hóa đơn còn nợ</a></li> -->
+            <!-- <li *ngIf="data.includes('6')"><a href="">Báo cáo thu ngân</a></li>
+        </ul>
+    </li> -->
+    <!-- <li *ngIf="data.includes('22')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-381-notebook"></i>
+            <span class="nav-text">Kế toán tổng hợp</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('6')"><a href="">Phiếu thu</a></li>
+            <li *ngIf="data.includes('6')"><a href="">Phiếu chi</a></li>
+            <li *ngIf="data.includes('6')"><a href="">Cash Report</a></li>
+        </ul>
+    </li> -->
+    <!-- <li *ngIf="data.includes('23')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-381-database"></i>
+            <span class="nav-text">Công cụ</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('6')"><a [routerLink]="['/cms/system/decentralization']">Phân quyền tài khoản</a> -->
+    <!-- </li>
+            <li *ngIf="data.includes('6')"><a href="">Restore Database</a></li>
+        </ul>
+    </li> -->
+
+    <li *ngIf="data.includes('24')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-381-print"></i>
+            <span class="nav-text">Báo cáo</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('6')"><a href="">Báo cáo</a></li>
+        </ul>
+    </li>
+    <li *ngIf="data.includes('21')">
+        <a class="has-arrow ai-icon" href="" aria-expanded="false">
+            <i class="flaticon-092-money"></i>
+            <span class="nav-text">Hệ thống</span>
+        </a>
+        <ul aria-expanded="false">
+            <li *ngIf="data.includes('14')"><a [routerLink]="['/cms/list/sys-user']">Danh sách tài khoản</a></li>
+            <li *ngIf="data.includes('15')"><a [routerLink]="['/cms/system/sys-other-list']">Tham số hệ thống</a></li>
+            <li *ngIf="data.includes('16')"><a [routerLink]="['/cms/system/sys-other-list-type']">Nhóm tham số hệ
+                    thống</a></li>
+        </ul>
+    </li>
+
+</ul>

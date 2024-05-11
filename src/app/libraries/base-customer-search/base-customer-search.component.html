@@ -1,0 +1,86 @@
+<div class="select-box form-control">
+    <div class="select-box__current" tabindex="1">
+        <div class="select-box__value">
+            <input class="select-box__input" type="radio" id="null" value="null" name="null"
+                [checked]="!!selectedData" />
+            <p class="select-box__input-text" [ngStyle]="{
+                display: 'block !important'
+            }">{{!!selectedData ? selectedData[showFrom]:''}}</p>
+        </div>
+        @if (!!selectedData) {
+        <button (click)="onUnSelectedData()" type="button" class="close clear-content" data-dismiss="modal"><span>&times;</span>
+        </button>
+        }
+        <div class="select-box__icon" (click)="onShowPopup()">
+            <i class="flaticon-381-search-2"></i>
+        </div>
+    </div>
+</div>
+
+
+@if(!!showPopup){
+    @if (!isModalMode) {
+        <div class="backgound-content">
+        </div>
+    }
+<div [ngStyle]="{
+    margin:top+'rem '+left+'%'
+}" #containerBigger class="modal-dialog modal-edit-container popup-search" role="document">
+    <div #container class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title">{{!!!language ? title[0]: title[1] || ''}}</h5>
+            <button [ngStyle]="{
+              right: 0+'!important',
+              top: 0+'!important'
+            }" type="button" (click)="onClose()" class="close" data-dismiss="modal"><span>&times;</span>
+            </button>
+        </div>
+        <div class="modal-body"><ng-container [ngTemplateOutlet]="main"></ng-container></div>
+        <div class="modal-footer">
+
+            <!-- <button (click)="onCancel()" type="button" class="btn btn-danger light" data-dismiss="modal">{{!!language?
+                    'Close':'Thoát'}}</button>(click)="onCancel()"
+                <button (click)="saveData()" type="button" class="btn btn-primary">{{!!language? 'Save':'Lưu'}}</button> -->
+        </div>
+    </div>
+</div>
+
+<ng-template #main>
+    <div class="app-base-customer-search-container">
+        <app-base-page-list [outerInOperators]="outerInOperators" [left]="left" [title]="title" [columns]="columns"
+            [isControl]="true" [apiDefinition]="apiQueryList" [hideHeader]="true"
+            (selectedDataChange)="onSelectedDataChange($event)"></app-base-page-list>
+        <ng-template #left>
+            <div class="card-body chat-wrapper p-0">
+                <div class="chat-left-sidebar">
+                    <div class="d-flex chat-fix-search align-items-center">
+                        <div class="input-group message-search-area">
+                            <input [(ngModel)]="searchType" appDebounce (debounceKeyUp)="onSearchListType($event)"
+                                type="text" class="form-control" placeholder="Search here..">
+                        </div>
+                    </div>
+                    <div class="card-body message-bx px-0 pt-3" [ngStyle]="{
+                            maxHeight: appLayoutService.tableHeight + 'px',
+                            overflowX: 'overlay'
+                        }">
+                        <div class="tab-content dz-scroll table">
+                            @for (item of otherListTypeOptions; track $index) {
+                            <div (click)="onSelectedListTypeChanged(item)" class="tab-pane fade show active">
+                                <!--  dfsd-->
+                                <div class="chat-list-area" [class.active]="currentIdType == item.id">
+                                    <div class="info-body">
+                                        <div class="d-flex">
+                                            <h4 class="text-black user-name mb-0 font-w300 fs-16">{{item.name}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</ng-template>
+}
