@@ -46,9 +46,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     private httpService: HttpRequestService,
     private cardInfoService: CardInfoService,
   ) {
-
+    var randomNumber = Math.floor(Math.random() * 10+1);
+    var formattedNumber = randomNumber.toString().padStart(3, '0');
+    var random = 'CARD'+formattedNumber
     this.form = this.fb.group({
-      cardCode: [null,[Validators.required]]
+      cardCode: [random,[Validators.required]]
     });
 
   }
