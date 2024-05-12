@@ -6,18 +6,21 @@ import { api } from '../../constants/api/apiDefinitions';
 import { HttpRequestService } from '../../services/http.service';
 import { AlertService } from '../../libraries/alert/alert.service';
 import { AlertComponent } from '../../libraries/alert/alert.component';
+import { PreLoaderComponent } from '../../layout/pre-loader/pre-loader.component';
 
 @Component({
   selector: 'app-information-card-check-in',
   standalone: true,
   imports: [
     AlertComponent, 
+    PreLoaderComponent
   ],
   templateUrl: './information-card-check-in.component.html',
   styleUrl: './information-card-check-in.component.scss'
 })
 export class InformationCardCheckInComponent implements OnInit, AfterViewInit, OnDestroy{
-  loading: boolean = true;
+  loading: boolean = false;
+  
   subscriptions: Subscription[] =[];
   data!: any;
   constructor(
@@ -26,9 +29,12 @@ export class InformationCardCheckInComponent implements OnInit, AfterViewInit, O
     private alertService: AlertService,
     private router: Router,
   ) { 
-    this.cardInfoService.data$.subscribe(data => {
-      this.data = data;
-    });
+    this.subscriptions.push(
+      this.cardInfoService.data$.subscribe(data => {
+        this.data = data;
+      })!,
+    );
+    
   }
   ngAfterViewInit(): void {
     if(!!this.data){
