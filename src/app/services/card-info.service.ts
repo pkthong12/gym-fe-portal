@@ -11,23 +11,16 @@ import { TokenService } from "./token.service";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class CardInfoService {
   data$ = new BehaviorSubject<IAuthData | null>(null);
   constructor(
       private httpService: HttpRequestService
   ) { }
 
-  // Web client login
-  userLogin(request: IClientLoginRequest): Observable<any> {
-      return this.httpService.makePostRequest('clientLogin',api.SYS_LOGIN, request)
+  getData(code:any): void{
+    this.httpService.makeGetRequest('queryList',api.CARD_ISSUANCE_QUERY_LIST+`?code="${code}`)
+    .subscribe(res=>{
+      this.data$.next(res.body.innerBody)
+    })
   }
-
-  
-
-  isAuthenticate = (): boolean => {
-    return !!this.data$.value;
-  };
-
-  getUserInfo = () => {};
-
 }

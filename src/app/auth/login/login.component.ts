@@ -14,6 +14,7 @@ import { AlertComponent } from '../../libraries/alert/alert.component';
 import { PreLoaderComponent } from '../../layout/pre-loader/pre-loader.component';
 import { HttpRequestService } from '../../services/http.service';
 import { api } from '../../constants/api/apiDefinitions';
+import { CardInfoService } from '../../services/card-info.service';
 
 @Component({
   selector: 'app-login',
@@ -43,6 +44,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private alertService: AlertService,
     private httpService: HttpRequestService,
+    private cardInfoService: CardInfoService,
   ) {
 
     this.form = this.fb.group({
@@ -69,6 +71,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           const body = data.body;
           if (body.statusCode === 200) {
             this.alertService.success(body.messageCode||'Check In Success');
+            this.router.navigate(['/info']);
           }else{
             this.alertService.warn(body.messageCode);
           }

@@ -28,7 +28,4 @@ export class NavigatorComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     Zenix.init();
   }
-  ngOnInit() {
-    this.data = this.authService.data$.value?.decentralization;
-  }
 }
