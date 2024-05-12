@@ -18,7 +18,7 @@ export class CardInfoService {
   ) { }
 
   getData(code:any): void{
-    this.httpService.makeGetRequest('queryList',api.CARD_ISSUANCE_QUERY_LIST+`?code="${code}`)
+    this.httpService.makeGetRequest('getData',api.CARD_INFO_GET_DATA_PORTAL+code)
     .subscribe(res=>{
       this.data$.next(res.body.innerBody)
     })

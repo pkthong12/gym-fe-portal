@@ -64,13 +64,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loading = true;
     var card = this.form.get('cardCode')?.value;
     this.subscriptions.push(
-      this.httpService.makePostRequest('checIn',api.CARD_CHECK_IN_CHECK_IN,{
+      this.httpService.makePostRequest('checkIn',api.CARD_CHECK_IN_CHECK_IN,{
         cardCode:card
       }).subscribe(data => {
         if (!!data.ok && data.status === 200) {
           const body = data.body;
           if (body.statusCode === 200) {
             this.alertService.success(body.messageCode||'Check In Success');
+            this.cardInfoService.getData(card);
             this.router.navigate(['/info']);
           }else{
             this.alertService.warn(body.messageCode);

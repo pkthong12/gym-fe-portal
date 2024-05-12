@@ -99,6 +99,7 @@ export enum api{
     CARD_INFO_TOGGLE_ACTIVE = '/api/CardInfo/ToggleActiveIds',
     CARD_INFO_GET_ALL_CARD_VALID = '/api/CardInfo/GetAllCardValid',
     CARD_INFO_GET_LIST_CUSTOMER = '/api/CardInfo/GetListCustomer',    
+    CARD_INFO_GET_DATA_PORTAL = '/api/CardInfo/GetCardInfoPortal?code=',    
 
     //CARD_HISTORY
     CARD_HISTORY_QUERY_LIST = '/api/CardHistory/QueryList',

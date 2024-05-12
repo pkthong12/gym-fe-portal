@@ -6,4 +6,6 @@ export interface IAuthData {
     effectDate: string;
     expireDate: string;
     shiftTime: string;
+    checkInTime: string;
+    checkOutTime: string;
 }

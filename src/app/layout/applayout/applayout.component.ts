@@ -36,15 +36,6 @@ export class ApplayoutComponent implements OnInit {
   ngOnInit(): void {
     this.appConfig.BASE_URL = baseUrl;
     this.appConfig.LANGUAGE = language;
-    // try {
-    //   fetch('../../assets/app.config.json').then(res => res.json()).then(({ 
-    //     BASE_URL,LANGUAGE
-    //   }) => {
-        
-    //   }).catch(e => console.log("fetch app.config.json error", e))
-    // } catch (e) {
-    //   console.log("appInitialize() zip() error: ", e)
-    // }
   }
 
 }

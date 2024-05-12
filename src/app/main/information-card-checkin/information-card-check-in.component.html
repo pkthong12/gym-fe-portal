@@ -1,82 +1,71 @@
-<div id="about-me" class="tab-pane fade">
-    <div class="profile-personal-info">
-        <h4 class="text-primary mb-4">Thông tin thẻ hiện tại</h4>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Mã hội viên <span class="pull-right">:</span>
-                </h5>
+@if(!!data) {
+    <div id="about-me" class="tab-pane fade">
+        <div class="profile-personal-info">
+            <h4 class="text-primary mb-4">Thông tin thẻ hiện tại</h4>
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Mã hội viên <span class="pull-right">:</span>
+                    </h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.customerCode}}</span>
+                </div>
             </div>
-            <div class="col-sm-9 col-6"><span>Mitchell C.Shay</span>
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Tên hội viên <span class="pull-right">:</span>
+                    </h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.customerName}}</span>
+                </div>
             </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Tên hội viên <span class="pull-right">:</span>
-                </h5>
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Mã thẻ <span class="pull-right">:</span></h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.cardCode}}</span>
+                </div>
             </div>
-            <div class="col-sm-9 col-6"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9ccd1c8c4d9c5cce9ccd1c8c4d9c5ccc587cac6c4">[email&#160;protected]</a></span>
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Ngày hiệu lực <span class="pull-right">:</span></h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.startDate}}</span>
+                </div>
             </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Mã thẻ <span class="pull-right">:</span></h5>
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Ngày hết hạn <span class="pull-right">:</span></h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.endDate}}</span>
+                </div>
             </div>
-            <div class="col-sm-9 col-6"><span>Full Time (Free Lancer)</span>
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Thời gian tập <span class="pull-right">:</span></h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.practiceTime}}</span>
+                </div>
             </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Ngày cấp thẻ <span class="pull-right">:</span>
-                </h5>
+    
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Thời gian check-in <span class="pull-right">:</span></h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.checkInTime}}</span>
+                </div>
             </div>
-            <div class="col-sm-9 col-6"><span>27</span>
+            <div class="row mb-2">
+                <div class="col-sm-3 col-7">
+                    <h5 class="f-w-500">Thời gian check-out <span class="pull-right">:</span></h5>
+                </div>
+                <div class="col-sm-9 col-5"><span>{{data.checkOutTime}}</span>
+                </div>
             </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Ngày hiệu lực <span class="pull-right">:</span></h5>
+            <div class="text-center mt-5">
+                <button (click)="onSubmit()" id="btn-login" class="btn btn-primary btn-block">Check Out</button>
             </div>
-            <div class="col-sm-9 col-6"><span>Rosemont Avenue Melbourne,
-                    Florida</span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Ngày hết hạn <span class="pull-right">:</span></h5>
-            </div>
-            <div class="col-sm-9 col-6"><span>07 Year Experiences</span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Ca tập <span class="pull-right">:</span></h5>
-            </div>
-            <div class="col-sm-9 col-6"><span>07 Year Experiences</span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Ca tập <span class="pull-right">:</span></h5>
-            </div>
-            <div class="col-sm-9 col-6"><span>07 Year Experiences</span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Thời gian check-in <span class="pull-right">:</span></h5>
-            </div>
-            <div class="col-sm-9 col-6"><span>07 Year Experiences</span>
-            </div>
-        </div>
-        <div class="row mb-2">
-            <div class="col-sm-3 col-6">
-                <h5 class="f-w-500">Thời gian check-out <span class="pull-right">:</span></h5>
-            </div>
-            <div class="col-sm-9 col-6"><span>07 Year Experiences</span>
-            </div>
-        </div>
-        <div class="text-center mt-5">
-            <button id="btn-login" class="btn btn-primary btn-block">Check Out</button>
         </div>
     </div>
-</div>
+}
+
+<core-alert></core-alert>
