@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     var formattedNumber = randomNumber.toString().padStart(3, '0');
     var random = 'CARD'+formattedNumber
     this.form = this.fb.group({
-      cardCode: [random,[Validators.required]]
+      cardCode: [null,[Validators.required]]
     });
 
   }
